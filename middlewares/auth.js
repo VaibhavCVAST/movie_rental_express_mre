@@ -3,7 +3,7 @@ const config = require("config");
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers["x-auth-token"];
-  console.log("token is ", token);
+  // console.log("token is ", token);
   if (!token)
     return res.status(400)
       .send({ success: false, message: "Access Denied ! Invalid jwt token" });

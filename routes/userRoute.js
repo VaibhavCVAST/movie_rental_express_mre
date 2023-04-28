@@ -5,6 +5,7 @@ const auth = require("../middlewares/auth");
 const { admin } = require("../middlewares/admin");
 // const { create } = require("lodash");
 const bcrypt = require("bcrypt");
+const { validateId } = require("../middlewares/validateId");
 
 router.get("/", async (req, res) => {
   const user = await User.find();
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
   res.status(200).send(user);
 });
 
-router.get("/:id", auth, async (req, res) => {
+router.get("/:id", auth, validateId, async (req, res) => {
   const user = await User.findById(req.params.id);
   if (!user) return res.status(400).send(error.details[0].message);
   res.status(200).send(user);
@@ -34,7 +35,7 @@ router.post("/", async (req, res) => {
   res.status(200).send(createUser);
 });
 
-router.put("/:id", auth, async (req, res) => {
+router.put("/:id", auth, validateId, async (req, res) => {
   // const user = await User.findById(req.params.id);
   // if (!user) return res.status(404).send("invalid userId");
   const { name, email, password, isAdmin } = req.body;
@@ -53,7 +54,7 @@ router.put("/:id", auth, async (req, res) => {
   // res.status(200).send(updateUser);
 });
 
-router.delete("/:id", auth, admin, async (req, res) => {
+router.delete("/:id", auth, admin,validateId,  async (req, res) => {
   const user = await User.findByIdAndDelete(req.params.id);
   if (!user) return res.status(400).send("invalid Id");
   res.status(200).send(user);
