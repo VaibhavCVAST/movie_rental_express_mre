@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const { trimStart } = require("lodash");
+Joi.objectId = require("joi-objectid")(Joi);
 
 const movieSchema = new mongoose.Schema({
   title: {
@@ -39,6 +40,7 @@ function validateMovie(input) {
     genre: Joi.objectId().required(),
     liked: Joi.boolean().default(false),
   });
+  return schema.validate(input)
 }
 
 module.exports = { validateMovie, Movie };
