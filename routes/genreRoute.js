@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", auth, validateId, async (req, res) => {
   const genre = await Genre.findById(req.params.id);
-  if (!genre) return res.status(200).send("invalid Id");
+  if (!genre) return res.status(400).send("invalid Id");
   res.status(200).send(genre);
 });
 

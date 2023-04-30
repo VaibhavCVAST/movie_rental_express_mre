@@ -54,7 +54,7 @@ router.put("/:id", auth, validateId, async (req, res) => {
   // res.status(200).send(updateUser);
 });
 
-router.delete("/:id", auth, admin,validateId,  async (req, res) => {
+router.delete("/:id", auth, admin, validateId, async (req, res) => {
   const user = await User.findByIdAndDelete(req.params.id);
   if (!user) return res.status(400).send("invalid Id");
   res.status(200).send(user);
