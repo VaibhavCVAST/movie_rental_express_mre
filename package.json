@@ -4,7 +4,7 @@
   "description": "MRE_Movie_Rental_Express",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest --watchAll"
   },
   "author": "Vaibhav Chowdhary",
   "license": "ISC",
@@ -22,5 +22,9 @@
     "mongoose": "^7.0.5",
     "nodemon": "^2.0.22",
     "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
   }
 }
