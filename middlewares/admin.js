@@ -1,5 +1,5 @@
 const verifyAdmin = (req,res,next) => {
-    if(!req.user.isAdmin) return res.status(401).send('Access Forbidden')
+    if(!req.user.isAdmin) return res.status(403).send('Access Forbidden')
     next()
 }
 
