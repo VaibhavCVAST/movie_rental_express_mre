@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     maxLength: 20,
-    minLength: 3,
+    min: [3],
     required: true,
   },
   email: {
@@ -43,6 +43,7 @@ function validateUser(input) {
     password : Joi.string().required,
     isAdmin: Joi.boolean().required(),
   });
+  return schema.validate(input)
 }
 
 module.exports = { User, validateUser };
