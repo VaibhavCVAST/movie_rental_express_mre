@@ -80,7 +80,7 @@ describe("/genre", () => {
     //   expect(res.body.error.details[0].message).toBe('"name" length must be at least 3 characters long');
     // });
     // // ---7
-    // it("should return 400 if genre name is more than 20 characters", async () => {
+    // it("should return 400 if genre name is more than 10 characters", async () => {
     //   const res = await req
     //     .post("/genre")
     //     .send({ name: "12345678901234567890123" });

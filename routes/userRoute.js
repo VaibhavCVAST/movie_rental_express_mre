@@ -20,9 +20,9 @@ router.get("/:id", auth, validateId, async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const error = validateUser(req.body);
-  console.log(error);
-  if (error) return res.status(400).send(error.error.details[0].message);
+  const {error} = validateUser(req.body);
+  // console.log("This si status error",error);
+  if (!error) return res.status(400).send(error.details[0].message);
   const { name, email, password, isAdmin } = req.body;
   const createUser = new User({
     name,
